@@ -5,7 +5,6 @@ package javaapplication1;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Shakill
@@ -15,12 +14,68 @@ import javax.swing.*;
 import net.proteanit.sql.DbUtils;
 
 public class Employee_Info extends javax.swing.JFrame {
-//--  
+//--  Déclarations
+
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+
     /**
      * Creates new form Employee_Info
      */
     public Employee_Info() {
         initComponents();
+        conn = javaconnect.ConnectDb();
+        Update_table();
+        Fillcombo();
+    }
+
+    private void Update_table() {
+        //--  Déclarations
+        String sql = "select * from EmployeeInfo";
+
+        try {
+            //--  Initialisations
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+
+            Table_Employee.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            try {
+                rs.close();
+                pst.close();
+            } catch (Exception e) {
+
+            }
+        }
+    }
+
+    private void Fillcombo() {
+        //--  Déclarations
+        String sql = "select * from EmployeeInfo";
+
+        try {
+            //--  Initialisations
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            ComboBox_name.removeAllItems();
+
+            while (rs.next()) {
+                String name = rs.getString("name");
+                ComboBox_name.addItem(name);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            try {
+                rs.close();
+                pst.close();
+            } catch (Exception e) {
+
+            }
+        }
     }
 
     /**
@@ -34,6 +89,7 @@ public class Employee_Info extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         Table_Employee = new javax.swing.JTable();
+        ComboBox_name = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,21 +106,29 @@ public class Employee_Info extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(Table_Employee);
 
+        ComboBox_name.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ComboBox_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(ComboBox_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -106,6 +170,7 @@ public class Employee_Info extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboBox_name;
     private javax.swing.JTable Table_Employee;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

@@ -5,7 +5,6 @@ package javaapplication1;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Shakill
@@ -17,6 +16,7 @@ import java.sql.ResultSet;
 import javax.swing.*;
 
 public class Login_jframe extends javax.swing.JFrame {
+
     //--  Déclarations
     Connection conn = null;
     ResultSet rs = null;
@@ -145,23 +145,32 @@ public class Login_jframe extends javax.swing.JFrame {
     private void cmd_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_loginActionPerformed
         //--  Déclarations
         String sql = "select * from EmployeeInfo where username=? and password=?";
-        
-        try{
+
+        try {
             pst = conn.prepareStatement(sql);
             pst.setString(1, txt_username.getText());
             pst.setString(2, txt_password.getText());
-            
+
             rs = pst.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Username and Password is correct");
+                rs.close();
+                pst.close();
                 Employee_Info s = new Employee_Info();
                 s.setVisible(true);
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Username and Password is not correct");
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
+        } finally {
+            try {
+                rs.close();
+                pst.close();
+            } catch (Exception e) {
+
+            }
         }
     }//GEN-LAST:event_cmd_loginActionPerformed
 
