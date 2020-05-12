@@ -10,6 +10,7 @@ package javaapplication1;
  * @author Shakill
  */
 import java.awt.*;
+import java.awt.event.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,6 +31,11 @@ public class Login_jframe extends javax.swing.JFrame {
         conn = javaconnect.ConnectDb();
     }
 
+    public void close() {
+        WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,7 +53,7 @@ public class Login_jframe extends javax.swing.JFrame {
         cmd_login = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1100, 600));
         setSize(new java.awt.Dimension(100, 100));
 
@@ -157,6 +163,7 @@ public class Login_jframe extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Username and Password is correct");
                 rs.close();
                 pst.close();
+                close();
                 Employee_Info s = new Employee_Info();
                 s.setVisible(true);
             } else {
@@ -181,7 +188,7 @@ public class Login_jframe extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
