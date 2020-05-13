@@ -120,6 +120,15 @@ public class Employee_Info extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Table_Employee);
 
         ComboBox_name.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboBox_name.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                ComboBox_namePopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
 
         jLabel1.setText("Employeeid");
 
@@ -189,7 +198,7 @@ public class Employee_Info extends javax.swing.JFrame {
 
     private void Table_EmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_EmployeeMouseClicked
         //--  Déclarations
-        
+
         try {
             //--  Initialisations
             int row = Table_Employee.getSelectedRow();
@@ -197,17 +206,17 @@ public class Employee_Info extends javax.swing.JFrame {
             String sql = "select * from EmployeeInfo where employeeid='" + Table_click + "' ";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 String add1 = rs.getString("employeeid");
                 Employeeid_jTextField.setText(add1);
-                
+
                 String add2 = rs.getString("name");
                 Name_jTextField.setText(add2);
-                
+
                 String add3 = rs.getString("surname");
                 Surname_jTextField.setText(add3);
-                
+
                 String add4 = rs.getString("age");
                 Age_jTextField.setText(add4);
             }
@@ -215,6 +224,35 @@ public class Employee_Info extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_Table_EmployeeMouseClicked
+
+    private void ComboBox_namePopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_ComboBox_namePopupMenuWillBecomeInvisible
+        //--  Déclarations
+        String tmp = (String) ComboBox_name.getSelectedItem();
+        String sql = "select * from EmployeeInfo where name=?";
+
+        try {
+            //--  Initialisations
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, tmp);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                String add1 = rs.getString("employeeid");
+                Employeeid_jTextField.setText(add1);
+
+                String add2 = rs.getString("name");
+                Name_jTextField.setText(add2);
+
+                String add3 = rs.getString("surname");
+                Surname_jTextField.setText(add3);
+
+                String add4 = rs.getString("age");
+                Age_jTextField.setText(add4);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_ComboBox_namePopupMenuWillBecomeInvisible
 
     /**
      * @param args the command line arguments
