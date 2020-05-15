@@ -155,7 +155,7 @@ public class Employee_Info extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        jButton1.setText("Close");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication1/Button-Close-icon.png"))); // NOI18N
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -179,6 +179,7 @@ public class Employee_Info extends javax.swing.JFrame {
         jMenu1.add(jSeparator1);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication1/Button-Close-icon.png"))); // NOI18N
         jMenuItem2.setText("Close");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
