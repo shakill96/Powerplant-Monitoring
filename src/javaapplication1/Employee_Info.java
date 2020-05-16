@@ -14,6 +14,8 @@ import java.awt.event.WindowEvent;
 import java.sql.*;
 import javax.swing.*;
 import net.proteanit.sql.DbUtils;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Employee_Info extends javax.swing.JFrame {
 //--  Déclarations
@@ -30,6 +32,22 @@ public class Employee_Info extends javax.swing.JFrame {
         conn = javaconnect.ConnectDb();
         Update_table();
         Fillcombo();
+        CurrentDate();
+    }
+
+    public void CurrentDate() {
+        //--  Date
+        Calendar cal = new GregorianCalendar();
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        date_txt.setText("Date " + year + "/" + (month + 1) + "/" + day);
+
+        //--  Time
+        int second = cal.get(Calendar.SECOND);
+        int minute = cal.get(Calendar.MINUTE);
+        int hour = cal.get(Calendar.HOUR);
+        time_txt.setText("Time " + hour + ":" + (minute) + ":" + second);
     }
 
     public void close() {
@@ -113,6 +131,8 @@ public class Employee_Info extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        date_txt = new javax.swing.JMenu();
+        time_txt = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -192,6 +212,12 @@ public class Employee_Info extends javax.swing.JFrame {
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
+
+        date_txt.setText("Date");
+        jMenuBar1.add(date_txt);
+
+        time_txt.setText("Time");
+        jMenuBar1.add(time_txt);
 
         setJMenuBar(jMenuBar1);
 
@@ -368,6 +394,7 @@ public class Employee_Info extends javax.swing.JFrame {
     private javax.swing.JTextField Name_jTextField;
     private javax.swing.JTextField Surname_jTextField;
     private javax.swing.JTable Table_Employee;
+    private javax.swing.JMenu date_txt;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -381,5 +408,6 @@ public class Employee_Info extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JMenu time_txt;
     // End of variables declaration//GEN-END:variables
 }
