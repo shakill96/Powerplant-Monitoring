@@ -17,7 +17,8 @@ import net.proteanit.sql.DbUtils;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class Employee_Info extends javax.swing.JFrame {
+public
+        class Employee_Info extends javax.swing.JFrame {
 //--  Déclarations
 
     Connection conn = null;
@@ -27,7 +28,8 @@ public class Employee_Info extends javax.swing.JFrame {
     /**
      * Creates new form Employee_Info
      */
-    public Employee_Info() {
+    public
+            Employee_Info() {
         initComponents();
         conn = javaconnect.ConnectDb();
         Update_table();
@@ -35,7 +37,8 @@ public class Employee_Info extends javax.swing.JFrame {
         CurrentDate();
     }
 
-    public void CurrentDate() {
+    public
+            void CurrentDate() {
         //--  Date
         Calendar cal = new GregorianCalendar();
         int month = cal.get(Calendar.MONTH);
@@ -50,12 +53,14 @@ public class Employee_Info extends javax.swing.JFrame {
         time_txt.setText("Time " + hour + ":" + (minute) + ":" + second);
     }
 
-    public void close() {
+    public
+            void close() {
         WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
     }
 
-    private void Update_table() {
+    private
+            void Update_table() {
         //--  Déclarations
         String sql = "select * from EmployeeInfo";
 
@@ -65,19 +70,23 @@ public class Employee_Info extends javax.swing.JFrame {
             rs = pst.executeQuery();
 
             Table_Employee.setModel(DbUtils.resultSetToTableModel(rs));
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        } finally {
+        }
+        finally {
             try {
                 rs.close();
                 pst.close();
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
 
             }
         }
     }
 
-    private void Fillcombo() {
+    private
+            void Fillcombo() {
         //--  Déclarations
         String sql = "select * from EmployeeInfo";
 
@@ -91,13 +100,16 @@ public class Employee_Info extends javax.swing.JFrame {
                 String name = rs.getString("name");
                 ComboBox_name.addItem(name);
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        } finally {
+        }
+        finally {
             try {
                 rs.close();
                 pst.close();
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
 
             }
         }
@@ -127,6 +139,7 @@ public class Employee_Info extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         Cmd_save = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        cmd_delete = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -203,6 +216,13 @@ public class Employee_Info extends javax.swing.JFrame {
             }
         });
 
+        cmd_delete.setText("Delete");
+        cmd_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmd_deleteActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("File");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
@@ -265,7 +285,8 @@ public class Employee_Info extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Cmd_save)
-                            .addComponent(jButton2))
+                            .addComponent(jButton2)
+                            .addComponent(cmd_delete))
                         .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -274,7 +295,7 @@ public class Employee_Info extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ComboBox_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,7 +312,8 @@ public class Employee_Info extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Surname_jTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(cmd_delete))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Age_jTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -329,7 +351,8 @@ public class Employee_Info extends javax.swing.JFrame {
                 String add4 = rs.getString("age");
                 Age_jTextField.setText(add4);
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_Table_EmployeeMouseClicked
@@ -358,7 +381,8 @@ public class Employee_Info extends javax.swing.JFrame {
                 String add4 = rs.getString("age");
                 Age_jTextField.setText(add4);
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_ComboBox_namePopupMenuWillBecomeInvisible
@@ -389,7 +413,8 @@ public class Employee_Info extends javax.swing.JFrame {
             pst.execute();
 
             JOptionPane.showMessageDialog(null, "Saved");
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
 
@@ -403,10 +428,29 @@ public class Employee_Info extends javax.swing.JFrame {
         s.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void cmd_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_deleteActionPerformed
+        //--  Déclarations
+        String sql = "delete from EmployeeInfo where employeeid =?";
+
+        try {
+            //--  Initialisations
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, Employeeid_jTextField.getText());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Deleted");
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+        Update_table();
+    }//GEN-LAST:event_cmd_deleteActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static
+            void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -419,20 +463,25 @@ public class Employee_Info extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        }
+        catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Employee_Info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        }
+        catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(Employee_Info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        }
+        catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Employee_Info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        }
+        catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Employee_Info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+            public
+                    void run() {
                 new Employee_Info().setVisible(true);
             }
         });
@@ -446,6 +495,7 @@ public class Employee_Info extends javax.swing.JFrame {
     private javax.swing.JTextField Name_jTextField;
     private javax.swing.JTextField Surname_jTextField;
     private javax.swing.JTable Table_Employee;
+    private javax.swing.JButton cmd_delete;
     private javax.swing.JMenu date_txt;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
