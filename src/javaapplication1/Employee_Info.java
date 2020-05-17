@@ -12,10 +12,10 @@ package javaapplication1;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.sql.*;
-import javax.swing.*;
-import net.proteanit.sql.DbUtils;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import javax.swing.*;
+import net.proteanit.sql.DbUtils;
 
 public
         class Employee_Info extends javax.swing.JFrame {
@@ -140,6 +140,7 @@ public
         Cmd_save = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         cmd_delete = new javax.swing.JButton();
+        txt_update = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -223,6 +224,13 @@ public
             }
         });
 
+        txt_update.setText("Update");
+        txt_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_updateActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("File");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
@@ -286,7 +294,8 @@ public
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Cmd_save)
                             .addComponent(jButton2)
-                            .addComponent(cmd_delete))
+                            .addComponent(cmd_delete)
+                            .addComponent(txt_update))
                         .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -295,7 +304,7 @@ public
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ComboBox_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -317,8 +326,9 @@ public
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Age_jTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(105, 105, 105))
+                            .addComponent(jLabel4)
+                            .addComponent(txt_update))
+                        .addGap(103, 103, 103))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -446,6 +456,28 @@ public
         Update_table();
     }//GEN-LAST:event_cmd_deleteActionPerformed
 
+    private void txt_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_updateActionPerformed
+        //--  Déclarations
+        String value1 = Employeeid_jTextField.getText();
+        String value2 = Name_jTextField.getText();
+        String value3 = Surname_jTextField.getText();
+        String value4 = Age_jTextField.getText();
+        String sql = "update EmployeeInfo set employeeid='" + value1 + "' ,name = '" + value2 + "' ,surname = '" + value3 + "',age='" + value4 + "' where employeeid"
+                + "='" + value1 + "'";
+
+        try {
+            //--  Initialisations
+            pst = conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Updated");
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+        Update_table();
+    }//GEN-LAST:event_txt_updateActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -512,5 +544,6 @@ public
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu time_txt;
+    private javax.swing.JButton txt_update;
     // End of variables declaration//GEN-END:variables
 }
