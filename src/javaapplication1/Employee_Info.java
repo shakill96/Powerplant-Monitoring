@@ -141,6 +141,7 @@ public
         jButton2 = new javax.swing.JButton();
         cmd_delete = new javax.swing.JButton();
         txt_update = new javax.swing.JButton();
+        cmd_clear = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -231,6 +232,13 @@ public
             }
         });
 
+        cmd_clear.setText("Clear");
+        cmd_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmd_clearActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("File");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
@@ -295,7 +303,8 @@ public
                             .addComponent(Cmd_save)
                             .addComponent(jButton2)
                             .addComponent(cmd_delete)
-                            .addComponent(txt_update))
+                            .addComponent(txt_update)
+                            .addComponent(cmd_clear))
                         .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -304,7 +313,7 @@ public
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ComboBox_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -328,10 +337,10 @@ public
                             .addComponent(Age_jTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
                             .addComponent(txt_update))
-                        .addGap(103, 103, 103))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(18, 18, 18)
+                        .addComponent(cmd_clear))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
@@ -478,6 +487,15 @@ public
         Update_table();
     }//GEN-LAST:event_txt_updateActionPerformed
 
+    private void cmd_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_clearActionPerformed
+        //--  Déclarations
+
+        Employeeid_jTextField.setText("");
+        Name_jTextField.setText("");
+        Surname_jTextField.setText("");
+        Age_jTextField.setText("");
+    }//GEN-LAST:event_cmd_clearActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -527,6 +545,7 @@ public
     private javax.swing.JTextField Name_jTextField;
     private javax.swing.JTextField Surname_jTextField;
     private javax.swing.JTable Table_Employee;
+    private javax.swing.JButton cmd_clear;
     private javax.swing.JButton cmd_delete;
     private javax.swing.JMenu date_txt;
     private javax.swing.JButton jButton1;
