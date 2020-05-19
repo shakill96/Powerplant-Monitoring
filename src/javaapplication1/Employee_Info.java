@@ -551,10 +551,60 @@ public
 
     private void txt_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyReleased
         //--  Déclarations
-        String sql = "select * from EmployeeInfo where name =?";
 
         try {
             //--  Initialisations
+            String sql = "select * from EmployeeInfo where name =?";
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, txt_search.getText());
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                String add1 = rs.getString("employeeid");
+                Employeeid_jTextField.setText(add1);
+
+                String add2 = rs.getString("name");
+                Name_jTextField.setText(add2);
+
+                String add3 = rs.getString("surname");
+                Surname_jTextField.setText(add3);
+
+                String add4 = rs.getString("age");
+                Age_jTextField.setText(add4);
+            }
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+        try {
+            //--  Initialisations
+            String sql = "select * from EmployeeInfo where employeeid =?";
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, txt_search.getText());
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                String add1 = rs.getString("employeeid");
+                Employeeid_jTextField.setText(add1);
+
+                String add2 = rs.getString("name");
+                Name_jTextField.setText(add2);
+
+                String add3 = rs.getString("surname");
+                Surname_jTextField.setText(add3);
+
+                String add4 = rs.getString("age");
+                Age_jTextField.setText(add4);
+            }
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+        try {
+            //--  Initialisations
+            String sql = "select * from EmployeeInfo where surname =?";
             pst = conn.prepareStatement(sql);
             pst.setString(1, txt_search.getText());
             rs = pst.executeQuery();
