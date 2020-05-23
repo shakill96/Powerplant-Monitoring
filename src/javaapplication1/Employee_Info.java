@@ -544,20 +544,24 @@ public
 
     private void cmd_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_deleteActionPerformed
         //--  Déclarations
-        String sql = "delete from EmployeeInfo where employeeid =?";
+        int p = JOptionPane.showConfirmDialog(null, "Do you really want to delete", "Delete", JOptionPane.YES_NO_OPTION);
 
-        try {
-            //--  Initialisations
-            pst = conn.prepareStatement(sql);
-            pst.setString(1, Employeeid_jTextField.getText());
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Deleted");
-        }
-        catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
+        if (p == 0) {
+            String sql = "delete from EmployeeInfo where employeeid =?";
 
-        Update_table();
+            try {
+                //--  Initialisations
+                pst = conn.prepareStatement(sql);
+                pst.setString(1, Employeeid_jTextField.getText());
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Deleted");
+            }
+            catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+
+            Update_table();
+        }
     }//GEN-LAST:event_cmd_deleteActionPerformed
 
     private void txt_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_updateActionPerformed
