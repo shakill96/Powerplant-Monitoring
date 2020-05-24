@@ -215,6 +215,8 @@ public
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buttons", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Agency FB", 1, 14), new java.awt.Color(51, 51, 255))); // NOI18N
 
+        Cmd_save.setBackground(new java.awt.Color(255, 51, 51));
+        Cmd_save.setForeground(new java.awt.Color(0, 0, 102));
         Cmd_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication1/Save-icon.png"))); // NOI18N
         Cmd_save.setText("Save");
         Cmd_save.addActionListener(new java.awt.event.ActionListener() {
