@@ -10,6 +10,7 @@ package javaapplication1;
  * @author Shakill
  */
 import com.sun.glass.events.KeyEvent;
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.sql.*;
@@ -491,6 +492,17 @@ public
 
                 String add4 = rs.getString("age");
                 Age_jTextField.setText(add4);
+
+                int age = Integer.parseInt(add4);
+
+                if (age >= 25) {
+                    Age_jTextField.setBackground(Color.GREEN);
+                    Age_jTextField.setForeground(Color.darkGray);
+                }
+                else {
+                    Age_jTextField.setBackground(Color.red);
+                    Age_jTextField.setForeground(Color.BLACK);
+                }
             }
         }
         catch (Exception e) {
