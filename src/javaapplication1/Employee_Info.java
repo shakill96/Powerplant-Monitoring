@@ -23,7 +23,6 @@ import net.proteanit.sql.DbUtils;
 public
         class Employee_Info extends javax.swing.JFrame {
 //--  Déclarations
-
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
