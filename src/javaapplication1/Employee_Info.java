@@ -23,6 +23,7 @@ import net.proteanit.sql.DbUtils;
 public
         class Employee_Info extends javax.swing.JFrame {
 //--  Déclarations
+
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
@@ -37,6 +38,21 @@ public
         Update_table();
         Fillcombo();
         CurrentDate();
+    }
+
+    public
+            void comboselect() {
+        int d = ComboBox_name.getSelectedIndex();
+
+        if (d == 1) {
+            UserInfo_Frame s = new UserInfo_Frame();
+            s.setVisible(true);
+        }
+
+        if (d == 2) {
+            Login_jframe l = new Login_jframe();
+            l.setVisible(true);
+        }
     }
 
     public
@@ -507,9 +523,20 @@ public
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+        finally {
+            try {
+                rs.close();
+                pst.close();
+            }
+            catch (Exception e) {
+
+            }
+        }
     }//GEN-LAST:event_Table_EmployeeMouseClicked
 
     private void ComboBox_namePopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_ComboBox_namePopupMenuWillBecomeInvisible
+        comboselect();
+
         //--  Déclarations
         String tmp = (String) ComboBox_name.getSelectedItem();
         String sql = "select * from EmployeeInfo where name=?";
@@ -536,6 +563,15 @@ public
         }
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
+        }
+        finally{
+            try {
+                rs.close();
+                pst.close();
+            }
+            catch (Exception e) {
+
+            }
         }
     }//GEN-LAST:event_ComboBox_namePopupMenuWillBecomeInvisible
 
@@ -569,6 +605,15 @@ public
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+        finally{
+            try {
+                rs.close();
+                pst.close();
+            }
+            catch (Exception e) {
+
+            }
+        }
 
         Update_table();
     }//GEN-LAST:event_Cmd_saveActionPerformed
@@ -597,6 +642,15 @@ public
             catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
+            finally{
+                try {
+                rs.close();
+                pst.close();
+            }
+            catch (Exception e) {
+
+            }
+            }
 
             Update_table();
         }
@@ -619,6 +673,15 @@ public
         }
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
+        }
+        finally{
+            try {
+                rs.close();
+                pst.close();
+            }
+            catch (Exception e) {
+
+            }
         }
 
         Update_table();
@@ -660,6 +723,15 @@ public
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+        finally{
+            try {
+                rs.close();
+                pst.close();
+            }
+            catch (Exception e) {
+
+            }
+        }
 
         try {
             //--  Initialisations
@@ -685,6 +757,15 @@ public
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+        finally{
+            try {
+                rs.close();
+                pst.close();
+            }
+            catch (Exception e) {
+
+            }
+        }
 
         try {
             //--  Initialisations
@@ -709,6 +790,15 @@ public
         }
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
+        }
+        finally{
+            try {
+                rs.close();
+                pst.close();
+            }
+            catch (Exception e) {
+
+            }
         }
     }//GEN-LAST:event_txt_searchKeyReleased
 
@@ -747,6 +837,15 @@ public
                 }
                 catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e);
+                }
+                finally{
+                    try {
+                rs.close();
+                pst.close();
+            }
+            catch (Exception e) {
+
+            }
                 }
 
             }
