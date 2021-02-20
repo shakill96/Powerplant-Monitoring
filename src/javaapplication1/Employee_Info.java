@@ -42,14 +42,13 @@ public
 
     public
             void comboselect() {
-        int d = ComboBox_name.getSelectedIndex();
 
-        if (d == 1) {
+        if (ComboBox_name.getSelectedItem().toString().equals("Sakura")) {
             UserInfo_Frame s = new UserInfo_Frame();
             s.setVisible(true);
         }
 
-        if (d == 2) {
+        if (ComboBox_name.getSelectedItem().toString().equals("Naruto")) {
             Login_jframe l = new Login_jframe();
             l.setVisible(true);
         }
@@ -564,7 +563,7 @@ public
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        finally{
+        finally {
             try {
                 rs.close();
                 pst.close();
@@ -605,7 +604,7 @@ public
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        finally{
+        finally {
             try {
                 rs.close();
                 pst.close();
@@ -642,14 +641,14 @@ public
             catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
-            finally{
+            finally {
                 try {
-                rs.close();
-                pst.close();
-            }
-            catch (Exception e) {
+                    rs.close();
+                    pst.close();
+                }
+                catch (Exception e) {
 
-            }
+                }
             }
 
             Update_table();
@@ -674,7 +673,7 @@ public
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        finally{
+        finally {
             try {
                 rs.close();
                 pst.close();
@@ -723,7 +722,7 @@ public
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        finally{
+        finally {
             try {
                 rs.close();
                 pst.close();
@@ -757,7 +756,7 @@ public
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        finally{
+        finally {
             try {
                 rs.close();
                 pst.close();
@@ -791,7 +790,7 @@ public
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        finally{
+        finally {
             try {
                 rs.close();
                 pst.close();
@@ -838,14 +837,14 @@ public
                 catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e);
                 }
-                finally{
+                finally {
                     try {
-                rs.close();
-                pst.close();
-            }
-            catch (Exception e) {
+                        rs.close();
+                        pst.close();
+                    }
+                    catch (Exception e) {
 
-            }
+                    }
                 }
 
             }
