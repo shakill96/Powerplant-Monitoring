@@ -619,9 +619,8 @@ public
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //--  Déclarations
-        close();
-        UserInfo_Frame s = new UserInfo_Frame();
-        s.setVisible(true);
+        dispose();
+        new UserInfo_Frame().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cmd_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_deleteActionPerformed
