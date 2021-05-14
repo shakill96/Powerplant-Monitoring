@@ -347,10 +347,10 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="Age_jTextField" max="32767" attributes="0"/>
                       <Component id="Surname_jTextField" max="32767" attributes="0"/>
                       <Component id="Name_jTextField" max="32767" attributes="0"/>
-                      <Component id="Employeeid_jTextField" min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="Employeeid_jTextField" pref="85" max="32767" attributes="0"/>
+                      <Component id="combo_age" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -376,8 +376,8 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Age_jTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="combo_age" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -402,8 +402,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="Employeeid_jTextField">
         </Component>
-        <Component class="javax.swing.JTextField" name="Age_jTextField">
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Surname"/>
@@ -412,6 +410,24 @@
         <Component class="javax.swing.JTextField" name="Name_jTextField">
         </Component>
         <Component class="javax.swing.JTextField" name="Surname_jTextField">
+        </Component>
+        <Component class="javax.swing.JComboBox" name="combo_age">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="7">
+                <StringItem index="0" value="20"/>
+                <StringItem index="1" value="21"/>
+                <StringItem index="2" value="22"/>
+                <StringItem index="3" value="23"/>
+                <StringItem index="4" value="24"/>
+                <StringItem index="5" value="25"/>
+                <StringItem index="6" value="26"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

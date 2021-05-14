@@ -158,10 +158,10 @@ public
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         Employeeid_jTextField = new javax.swing.JTextField();
-        Age_jTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         Name_jTextField = new javax.swing.JTextField();
         Surname_jTextField = new javax.swing.JTextField();
+        combo_age = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         txt_search = new javax.swing.JTextField();
         cmd_print = new javax.swing.JButton();
@@ -309,6 +309,8 @@ public
 
         jLabel3.setText("Surname");
 
+        combo_age.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "20", "21", "22", "23", "24", "25", "26" }));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -322,10 +324,10 @@ public
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Age_jTextField)
                     .addComponent(Surname_jTextField)
                     .addComponent(Name_jTextField)
-                    .addComponent(Employeeid_jTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Employeeid_jTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                    .addComponent(combo_age, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -345,8 +347,8 @@ public
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Age_jTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(combo_age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -507,17 +509,17 @@ public
                 Surname_jTextField.setText(add3);
 
                 String add4 = rs.getString("age");
-                Age_jTextField.setText(add4);
+                combo_age.setSelectedItem(add4);
 
                 int age = Integer.parseInt(add4);
 
                 if (age >= 25) {
-                    Age_jTextField.setBackground(Color.GREEN);
-                    Age_jTextField.setForeground(Color.darkGray);
+                    combo_age.setBackground(Color.GREEN);
+                    combo_age.setForeground(Color.darkGray);
                 }
                 else {
-                    Age_jTextField.setBackground(Color.red);
-                    Age_jTextField.setForeground(Color.BLACK);
+                    combo_age.setBackground(Color.red);
+                    combo_age.setForeground(Color.BLACK);
                 }
             }
         }
@@ -559,7 +561,7 @@ public
                 Surname_jTextField.setText(add3);
 
                 String add4 = rs.getString("age");
-                Age_jTextField.setText(add4);
+                combo_age.setSelectedItem(add4);
             }
         }
         catch (Exception e) {
@@ -598,7 +600,10 @@ public
             pst.setString(1, Employeeid_jTextField.getText());
             pst.setString(2, Name_jTextField.getText());
             pst.setString(3, Surname_jTextField.getText());
-            pst.setString(4, Age_jTextField.getText());
+            
+            String value = combo_age.getSelectedItem().toString();
+            
+            pst.setString(4, value);
             pst.execute();
 
             JOptionPane.showMessageDialog(null, "Saved");
@@ -661,7 +666,7 @@ public
         String value1 = Employeeid_jTextField.getText();
         String value2 = Name_jTextField.getText();
         String value3 = Surname_jTextField.getText();
-        String value4 = Age_jTextField.getText();
+        String value4 = combo_age.getSelectedItem().toString();
         String sql = "update EmployeeInfo set employeeid='" + value1 + "' ,name = '" + value2 + "' ,surname = '" + value3 + "',age='" + value4 + "' where employeeid"
                 + "='" + value1 + "'";
 
@@ -693,7 +698,7 @@ public
         Employeeid_jTextField.setText("");
         Name_jTextField.setText("");
         Surname_jTextField.setText("");
-        Age_jTextField.setText("");
+        combo_age.setSelectedIndex(0);
     }//GEN-LAST:event_cmd_clearActionPerformed
 
     private void txt_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyReleased
@@ -717,7 +722,7 @@ public
                 Surname_jTextField.setText(add3);
 
                 String add4 = rs.getString("age");
-                Age_jTextField.setText(add4);
+                combo_age.setSelectedItem(add4);
             }
         }
         catch (Exception e) {
@@ -751,7 +756,7 @@ public
                 Surname_jTextField.setText(add3);
 
                 String add4 = rs.getString("age");
-                Age_jTextField.setText(add4);
+                combo_age.setSelectedItem(add4);
             }
         }
         catch (Exception e) {
@@ -785,7 +790,7 @@ public
                 Surname_jTextField.setText(add3);
 
                 String add4 = rs.getString("age");
-                Age_jTextField.setText(add4);
+                combo_age.setSelectedItem(add4);
             }
         }
         catch (Exception e) {
@@ -832,7 +837,7 @@ public
                         Surname_jTextField.setText(add3);
 
                         String add4 = rs.getString("age");
-                        Age_jTextField.setText(add4);
+                        combo_age.setSelectedItem(add4);
                     }
                 }
                 catch (Exception e) {
@@ -920,7 +925,6 @@ public
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Age_jTextField;
     private javax.swing.JButton Cmd_save;
     private javax.swing.JComboBox<String> ComboBox_name;
     private javax.swing.JTextField Employeeid_jTextField;
@@ -930,6 +934,7 @@ public
     private javax.swing.JButton cmd_clear;
     private javax.swing.JButton cmd_delete;
     private javax.swing.JButton cmd_print;
+    private javax.swing.JComboBox<String> combo_age;
     private javax.swing.JMenu date_txt;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
