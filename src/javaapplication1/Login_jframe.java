@@ -65,6 +65,12 @@ public class Login_jframe extends javax.swing.JFrame {
             }
         });
 
+        txt_password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_passwordKeyPressed(evt);
+            }
+        });
+
         jLabel1.setText("Username");
 
         jLabel2.setText("Password");
@@ -180,6 +186,41 @@ public class Login_jframe extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_cmd_loginActionPerformed
+
+    private void txt_passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_passwordKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            //--  Déclarations
+        String sql = "select * from EmployeeInfo where username=? and password=?";
+
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, txt_username.getText());
+            pst.setString(2, txt_password.getText());
+
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "Username and Password is correct");
+                rs.close();
+                pst.close();
+                close();
+                Employee_Info s = new Employee_Info();
+                s.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Username and Password is not correct");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            try {
+                rs.close();
+                pst.close();
+            } catch (Exception e) {
+
+            }
+        }
+        }
+    }//GEN-LAST:event_txt_passwordKeyPressed
 
     /**
      * @param args the command line arguments
