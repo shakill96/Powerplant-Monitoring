@@ -1045,7 +1045,7 @@ public
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
-        File f = chooser.getSelectedFile();
+        File f = chooser.getCurrentDirectory();
         String filename = f.getAbsolutePath();
         path.setText(filename);
     }//GEN-LAST:event_jButton6ActionPerformed
