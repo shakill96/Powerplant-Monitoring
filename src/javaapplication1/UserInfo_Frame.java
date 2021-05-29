@@ -178,6 +178,7 @@ public
         doc_no = new javax.swing.JTextField();
         comment = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         Slider1 = new javax.swing.JSlider();
         cmd_ok = new javax.swing.JButton();
         value_int = new javax.swing.JTextField();
@@ -592,6 +593,13 @@ public
             }
         });
 
+        jButton8.setText("Open web page");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -612,7 +620,9 @@ public
                                 .addGap(18, 18, 18))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton7)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton8)
+                                    .addComponent(jButton7))
                                 .addGap(56, 56, 56)))
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -632,7 +642,9 @@ public
                             .addComponent(doc_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton7)))
+                        .addComponent(jButton7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton8)))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
@@ -1064,6 +1076,16 @@ public
         }
     }//GEN-LAST:event_document_tableMouseClicked
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        try {
+            String URL = "https://en.wikipedia.org/wiki/List_of_television_series_based_on_DC_Comics_publications";
+            java.awt.Desktop.getDesktop().browse(java.net.URI.create(URL));
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1114,6 +1136,7 @@ public
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
