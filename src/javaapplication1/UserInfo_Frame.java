@@ -12,6 +12,7 @@ package javaapplication1;
 import com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.sql.*;
 import javax.swing.*;
 import net.proteanit.sql.DbUtils;
@@ -33,6 +34,7 @@ public
         conn = javaconnect.ConnectDb();
         Update_table();
         Update_table_Employee();
+        Update_table_Document();
     }
 
     private
@@ -46,6 +48,32 @@ public
             rs = pst.executeQuery();
 
             Userinfo_table.setModel(DbUtils.resultSetToTableModel(rs));
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        finally {
+            try {
+                rs.close();
+                pst.close();
+            }
+            catch (Exception e) {
+
+            }
+        }
+    }
+            
+            private
+            void Update_table_Document() {
+        //--  Déclarations
+        String sql = "select * from Document_table";
+
+        try {
+            //--  Initialisations
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+
+            document_table.setModel(DbUtils.resultSetToTableModel(rs));
         }
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -142,6 +170,14 @@ public
         combo_age = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         Table_Employee = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        jButton6 = new javax.swing.JButton();
+        path = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        document_table = new javax.swing.JTable();
+        doc_no = new javax.swing.JTextField();
+        comment = new javax.swing.JTextField();
+        jButton7 = new javax.swing.JButton();
         Slider1 = new javax.swing.JSlider();
         cmd_ok = new javax.swing.JButton();
         value_int = new javax.swing.JTextField();
@@ -523,6 +559,84 @@ public
         );
 
         jTabbedPane2.addTab("tab4", jPanel4);
+
+        jButton6.setText("Attach");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        document_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        document_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                document_tableMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(document_table);
+
+        jButton7.setText("Save Document");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jButton6)
+                        .addGap(18, 18, 18)
+                        .addComponent(path))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(doc_no, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(comment, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton7)
+                                .addGap(56, 56, 56)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
+                    .addComponent(path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(doc_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton7)))
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("tab5", jPanel6);
 
         Slider1.setMajorTickSpacing(20);
         Slider1.setMaximum(120);
@@ -910,6 +1024,46 @@ public
        Update_table_Employee();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        try {
+            String sql = "insert into Document_table (Documentid,Comments,path) values (?,?,?)";
+            pst = conn.prepareStatement(sql);
+            pst.setString(3, path.getText());
+            pst.setString(2, comment.getText());
+            pst.setString(1, doc_no.getText());
+            pst.execute();
+            
+            JOptionPane.showMessageDialog(null, "Document saved");
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        
+        Update_table_Document();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        String filename = f.getAbsolutePath();
+        path.setText(filename);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void document_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_document_tableMouseClicked
+        int row = document_table.getSelectedRow();
+        String value = (document_table.getModel().getValueAt(row, 2).toString());
+        
+        try {
+            //--  Initialisations
+
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + value);
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+    }//GEN-LAST:event_document_tableMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -949,12 +1103,17 @@ public
     private javax.swing.JTextField avg_pr;
     private javax.swing.JButton cmd_ok;
     private javax.swing.JComboBox<String> combo_age;
+    private javax.swing.JTextField comment;
     private com.toedter.calendar.JDateChooser date_textbox;
+    private javax.swing.JTextField doc_no;
+    private javax.swing.JTable document_table;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -979,13 +1138,16 @@ public
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTextField max_pr;
     private javax.swing.JTextField min_pr;
+    private javax.swing.JTextField path;
     private javax.swing.JTextField pressure_textbox;
     private javax.swing.JTextField pumpid_textbox;
     private javax.swing.JTextField rotationalspeed_textbox;
